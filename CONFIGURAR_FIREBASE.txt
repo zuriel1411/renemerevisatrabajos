@@ -1,0 +1,27 @@
+CONFIGURACIÓN DE GG ACCESS
+=========================
+
+1) Crear un proyecto en https://console.firebase.google.com/ y registrar una aplicación Web.
+2) Copiar la configuración del SDK web en zuri/js/firebase-config.js. Reemplazar todos los valores TU_... por los valores reales.
+3) En Authentication > Sign-in method, habilitar:
+   - Correo electrónico/contraseña
+   - Google
+   - Teléfono
+   - Anónimo
+4) En Authentication > Settings > Authorized domains, agregar el dominio donde se publicará la web. Para pruebas locales, usar un servidor local (por ejemplo VS Code Live Server) y no abrir login.html como archivo file://.
+5) En Phone, configurar el país/regiones permitidas y revisar los límites/cuotas de SMS. Firebase usa reCAPTCHA para proteger el envío.
+6) Para Google, configurar el dominio autorizado y probar ventanas emergentes; el navegador debe permitirlas.
+
+SEGURIDAD DEL CORREO
+--------------------
+Este proyecto verifica el correo al registrarse mediante el enlace oficial que envía Firebase. En el inicio de sesión, exige que ese correo ya esté verificado.
+
+Los códigos numéricos personalizados de 6 dígitos por correo, distintos para registro e inicio de sesión, NO se generan en el navegador. Para cumplir ese requisito hace falta un backend seguro (por ejemplo Firebase Functions) que genere códigos aleatorios, guarde únicamente su hash, establezca caducidad y límite de intentos, y los envíe mediante un proveedor de correo con sus credenciales guardadas como secretos. No colocar claves privadas del proveedor en JavaScript ni en este ZIP. El flujo actual no finge enviar esos códigos: usa verificación de correo de Firebase.
+
+NOTAS
+-----
+- La autenticación con teléfono de Firebase verifica el número mediante SMS. Si el número es nuevo durante el flujo de inicio de sesión, la aplicación rechaza el acceso y pide registrarlo. Si se intenta registrar un número que ya existe, informa que la cuenta ya existía.
+- Google muestra el selector de cuenta con prompt=select_account; las cuentas disponibles dependen del navegador y de la sesión Google del usuario.
+- Invitado usa Firebase Anonymous Authentication. La sesión no tiene correo ni teléfono y puede perderse si se borra el almacenamiento del navegador.
+- Tras autenticar, aparece el botón “Continuar al menú”.
+- Los botones no pueden completar autenticación real hasta colocar la configuración y habilitar los proveedores anteriores en Firebase Console.

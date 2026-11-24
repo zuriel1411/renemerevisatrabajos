@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Acceso seguro | GG</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+  <style>
+    :root{--bg:#101827;--panel:#172337;--panel2:#1d2b42;--line:#2b3b55;--ink:#f3f6fc;--muted:#aab7ca;--accent:#70d6c5;--accent2:#83a8ff;--danger:#ffb8bf}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0%,#243d5b 0,transparent 42%),radial-gradient(ellipse at 100% 100%,#174a4a 0,transparent 35%),var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;padding:28px 16px;display:flex;align-items:center;justify-content:center}
+    .page{width:min(100%,980px)}.top{display:flex;align-items:center;justify-content:space-between;margin:0 0 18px;gap:12px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.16em}.brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#10202b;font-size:21px}.back{color:#c7d3e5;text-decoration:none;font-size:14px}.back:hover{color:#fff}
+    .layout{display:grid;grid-template-columns:minmax(0, .9fr) minmax(0,1.1fr);border:1px solid #ffffff19;border-radius:25px;overflow:hidden;background:#121e30;box-shadow:0 28px 80px #0006}.intro{padding:44px 38px;background:linear-gradient(155deg,#1d3550,#172b3c 65%,#17413f);display:flex;flex-direction:column;justify-content:space-between;min-height:650px}.intro h1{font-size:clamp(30px,4vw,43px);line-height:1.12;font-weight:800;letter-spacing:-.04em;margin:34px 0 14px}.intro p{color:#c0cede;line-height:1.7;max-width:340px}.secure-note{display:flex;gap:12px;align-items:flex-start;color:#c5d7dc;font-size:13px;line-height:1.55;padding:14px;border:1px solid #ffffff22;background:#ffffff0a;border-radius:14px}.secure-note i{font-size:19px;color:var(--accent)}
+    .form-side{padding:38px;min-width:0}.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--accent);margin-bottom:9px}.form-side h2{font-size:27px;font-weight:750;margin:0 0 7px}.sub{font-size:14px;color:var(--muted);margin-bottom:24px}.tabs{display:grid;grid-template-columns:1fr 1fr;padding:5px;gap:5px;background:#0d1727;border:1px solid var(--line);border-radius:13px;margin-bottom:22px}.tabs button{border:0;border-radius:9px;padding:11px 8px;background:transparent;color:var(--muted);font-weight:650;font-size:14px}.tabs button.active{background:#2a3c57;color:#fff;box-shadow:0 2px 8px #0002}.field{margin-bottom:15px}.field label{display:block;font-size:13px;color:#d6dfec;margin:0 0 7px}.control{display:block;width:100%;height:47px;border-radius:11px;border:1px solid var(--line);background:#0d1727;color:#fff;padding:0 14px;outline:none}.control::placeholder{color:#71819a}.control:focus{border-color:var(--accent2);box-shadow:0 0 0 3px #83a8ff22}.password-wrap{position:relative}.password-wrap .control{padding-right:48px}.toggle-pass{position:absolute;right:7px;top:6px;width:35px;height:35px;border:0;border-radius:8px;background:transparent;color:#aebbd0}.primary,.provider,.guest{width:100%;min-height:47px;border-radius:11px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;transition:.18s}.primary{border:0;background:linear-gradient(100deg,var(--accent),#8cdbce);color:#10252b;margin-top:5px}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.provider,.guest{border:1px solid var(--line);background:#1b2a40;color:#f0f4fb}.provider:hover,.guest:hover{background:#263a55;color:#fff;border-color:#526782}.provider i,.guest i{font-size:18px}.divider{display:flex;align-items:center;gap:12px;color:#8292a9;font-size:11px;letter-spacing:.12em;margin:21px 0}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}.providers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.guest{grid-column:1/-1}.phone-panel{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0e1929}.phone-panel h3{font-size:15px;font-weight:700;margin:0 0 5px}.phone-panel p{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 14px}.phone-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.phone-panel .control{margin-bottom:10px}.hidden{display:none!important}.status{display:none;padding:12px 14px;border-radius:11px;font-size:13px;line-height:1.5;margin:0 0 16px;overflow-wrap:anywhere}.status.show{display:block}.status.error{background:#482832;color:var(--danger);border:1px solid #804451}.status.ok{background:#183d3a;color:#b7f4e7;border:1px solid #28675d}.status.info{background:#1d3450;color:#c9e0ff;border:1px solid #355b82}.hint{font-size:12px;line-height:1.55;color:#91a1b7;margin:13px 0 0}.footer{text-align:center;color:#71819a;font-size:11px;margin-top:17px}.busy{opacity:.65;pointer-events:none}.recaptcha-wrap{overflow-x:auto;min-height:0;margin:8px 0}
+    @media(max-width:760px){body{padding:16px 12px;align-items:flex-start}.layout{grid-template-columns:1fr}.intro{min-height:0;padding:25px 24px}.intro h1{font-size:29px;margin:22px 0 9px}.intro p{margin-bottom:17px}.secure-note{margin-top:8px}.form-side{padding:26px 22px}.top{margin-bottom:14px}}
+    @media(max-width:390px){.providers{grid-template-columns:1fr}.guest{grid-column:auto}.form-side{padding:23px 17px}.phone-actions{grid-template-columns:1fr}.brand{letter-spacing:.1em}}
+  </style>
+</head>
+<body>
+<main class="page">
+  <header class="top">
+    <div class="brand"><span class="brand-icon"><i class="bi bi-shield-lock-fill"></i></span><span>GG ACCESS</span></div>
+    <a class="back" href="index.html"><i class="bi bi-arrow-left me-1"></i> Volver al menú</a>
+  </header>
+  <section class="layout">
+    <aside class="intro">
+      <div>
+        <div class="eyebrow">TU ESPACIO, TU CUENTA</div>
+        <h1>Accede de forma sencilla y segura.</h1>
+        <p>Inicia sesión o crea una cuenta con el método que prefieras. También puedes entrar como invitado.</p>
+      </div>
+      <div class="secure-note"><i class="bi bi-shield-check"></i><span>La verificación de correo, SMS y Google se procesa mediante Firebase Authentication. Nunca compartas tus códigos de seguridad.</span></div>
+    </aside>
+    <section class="form-side" aria-labelledby="formTitle">
+      <div class="eyebrow">BIENVENIDO A GG</div>
+      <h2 id="formTitle">Iniciar sesión</h2>
+      <p class="sub" id="formSubtitle">Ingresa con tu correo y contraseña.</p>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div class="tabs" role="tablist" aria-label="Tipo de acceso">
+        <button id="tabLogin" class="active" type="button" role="tab" aria-selected="true">Iniciar sesión</button>
+        <button id="tabRegister" type="button" role="tab" aria-selected="false">Crear cuenta</button>
+      </div>
+      <form id="emailForm" novalidate>
+        <div class="field"><label for="email">Correo electrónico</label><input class="control" id="email" type="email" autocomplete="email" placeholder="tunombre@correo.com" required></div>
+        <div class="field"><label for="password">Contraseña</label><div class="password-wrap"><input class="control" id="password" type="password" autocomplete="current-password" minlength="6" placeholder="Mínimo 6 caracteres" required><button class="toggle-pass" id="togglePassword" type="button" aria-label="Mostrar contraseña"><i class="bi bi-eye"></i></button></div></div>
+        <button class="primary" id="emailSubmit" type="submit">Iniciar sesión <i class="bi bi-arrow-right"></i></button>
+      </form>
+      <p class="hint" id="emailHint">En el registro se envía un enlace para verificar el correo. En el inicio de sesión se exige que ya esté verificado.</p>
+      <div class="divider">O UTILIZA OTRO MÉTODO</div>
+      <div class="providers">
+        <button class="provider" id="googleBtn" type="button"><i class="bi bi-google"></i> Google</button>
+        <button class="provider" id="phoneBtn" type="button"><i class="bi bi-phone"></i> Celular</button>
+        <button class="guest" id="guestBtn" type="button"><i class="bi bi-person-circle"></i> Continuar como invitado</button>
+      </div>
+      <section class="phone-panel hidden" id="phonePanel" aria-label="Verificación por celular">
+        <h3 id="phoneTitle">Acceso con celular</h3>
+        <p id="phoneDescription">Escribe tu número en formato internacional. Firebase enviará un código SMS para verificarlo.</p>
+        <div class="field"><label for="phone">Número de celular</label><input class="control" id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+525512345678"></div>
+        <div id="recaptcha-container" class="recaptcha-wrap"></div>
+        <button class="primary" id="sendSms" type="button">Enviar código SMS</button>
+        <div id="codeArea" class="hidden" style="margin-top:14px">
+          <div class="field"><label for="smsCode">Código de 6 dígitos</label><input class="control" id="smsCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456"></div>
+          <button class="provider" id="verifySms" type="button">Verificar y continuar</button>
+        </div>
+      </section>
+      <p class="hint">El acceso como invitado crea una sesión anónima. No equivale a una cuenta recuperable.</p>
+    </section>
+  </section>
+  <footer class="footer">Autenticación mediante Firebase · GG</footer>
+</main>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+CONFIGURACIÓN DEL INICIO DE SESIÓN GG
+=====================================
+
+Archivos agregados (los demás archivos del proyecto se conservaron):
+- zuri/login.html
+- zuri/js/auth.js
+- zuri/js/firebase-config.js
+
+1. Crear un proyecto en https://console.firebase.google.com/
+2. En Authentication > Sign-in method, activar:
+   - Email/Password
+   - Phone
+   - Google
+   - Anonymous
+3. En Configuración del proyecto > Tus apps, registrar una aplicación web y copiar
+   el objeto firebaseConfig dentro de zuri/js/firebase-config.js.
+4. En Authentication > Settings > Authorized domains, agregar el dominio donde
+   se publicará el sitio. Para pruebas locales, usar un servidor local (no abrir
+   login.html directamente como file://).
+5. Publicar/servir el proyecto por HTTPS para probar SMS y Google OAuth.
+6. Para SMS, configurar los países permitidos y probar primero con números de
+   teléfono de prueba en Firebase Authentication.
+
+IMPORTANTE SOBRE LOS CÓDIGOS POR CORREO
+---------------------------------------
+Firebase Authentication envía un correo de verificación con enlace cuando se
+crea una cuenta con email/contraseña. Este proyecto comprueba ese estado antes
+de permitir el inicio de sesión. No se ha simulado un código numérico de 6
+dígitos por correo.
+
+Para exigir un código numérico diferente en cada registro e inicio de sesión,
+hace falta un backend confiable (por ejemplo Firebase Cloud Functions), con
+generación aleatoria, expiración, límite de intentos, almacenamiento seguro
+(hash), envío mediante un proveedor de correo y validación del código antes de
+emitir una sesión. No debe generarse ni validarse ese código solo en JavaScript
+del navegador, porque sería fácil de falsificar. Esa parte requiere configurar
+un proveedor de correo y secretos del servidor.
+
+GOOGLE
+------
+El botón usa prompt=select_account para pedir al navegador/Google que muestre
+el selector de cuentas disponibles. Google solo mostrará cuentas que el usuario
+tenga disponibles en ese navegador/sesión; una web no puede leer por su cuenta
+todas las cuentas guardadas en el navegador.
+
+DESTINO DESPUÉS DEL ACCESO
+--------------------------
+Por ahora la página muestra el resultado de autenticación. No redirige a otra
+página porque no se indicó cuál debe ser la página privada de destino.

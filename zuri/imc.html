@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>CALCULADORA IMC</title>
+    <style>
+        .barra-menu { background:#d7a86e; padding:10px 18px; }
+        .barra-menu a { display:flex; align-items:center; gap:10px; color:#25364a; text-decoration:none; font-weight:bold; }
+        .barra-menu img { width:38px; height:38px; object-fit:cover; border-radius:8px; }
+    </style>
+</head>
+<body class="h-100 m-0 p-0">
+    <header class="barra-menu">
+        <a href="index.html" title="Regresar al menú"><img src="img/hitler.jpg" alt="Regresar al menú"> MENÚ PRINCIPAL</a>
+    </header>
+
+    <div class="container-fluid min-vh-100 p-4 card border-0 rounded-0 d-flex justify-content-center"
+         style="background-color: #25364a; color: #f7f4ed;">
+
+        <h1 class="text-center">CALCULADORA DE ÍNDICE CORPORAL</h1>
+        <hr style="border-color: #d7a86e;">
+
+        <div class="row align-items-center">
+
+            <!-- Tabla a la izquierda -->
+            <div class="col-12 col-md-6 order-2 order-md-1 mb-4 mb-md-0">
+                <table class="table table-bordered text-center" style="background-color: #f7f4ed; margin: 0; border-color: #25364a;">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #d7a86e; color: #25364a;">Categoría</th>
+                            <th style="background-color: #d7a86e; color: #25364a;">Valor IMC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="background-color: #9bbbd1; font-weight: bold; color: #25364a;">BAJO PESO</td><td style="background-color: #9bbbd1; font-weight: bold; color: #25364a;">Menor a 18.5</td></tr>
+                        <tr><td style="background-color: #a9c6ad; font-weight: bold; color: #25364a;">NORMAL</td><td style="background-color: #a9c6ad; font-weight: bold; color: #25364a;">18.5 a 24.9</td></tr>
+                        <tr><td style="background-color: #e5d18b; font-weight: bold; color: #25364a;">SOBREPESO</td><td style="background-color: #e5d18b; font-weight: bold; color: #25364a;">25 a 29.9</td></tr>
+                        <tr><td style="background-color: #d9a77c; font-weight: bold; color: #25364a;">OBESIDAD I</td><td style="background-color: #d9a77c; font-weight: bold; color: #25364a;">30 a 34.9</td></tr>
+                        <tr><td style="background-color: #ce8c8c; font-weight: bold; color: #25364a;">OBESIDAD II</td><td style="background-color: #ce8c8c; font-weight: bold; color: #25364a;">35 a 39.9</td></tr>
+                        <tr><td style="background-color: #a85d62; font-weight: bold; color: white;">OBESIDAD III</td><td style="background-color: #a85d62; font-weight: bold; color: white;">40 o más</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Controles a la derecha -->
+            <div class="col-12 col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+                <div class="p-3 p-md-4 rounded-3" style="background-color: #344b63; border: 1px solid #d7a86e;">
+                    <h5>PESO (kg): <span id="vp">20</span></h5>
+                    <input type="range" class="form-control" id="peso" min="20" max="200" value="20">
+                    <br>
+                    <h5>ESTATURA (cm): <span id="ve">100</span></h5>
+                    <input type="range" class="form-control" id="estatura" min="100" max="220" value="100">
+                    <h2 class="text-center mt-5 mb-4">RESULTADO: <span id="imc">0</span></h2>
+                    <button id="reset" class="btn form-control" style="background-color: #d7a86e; color: #25364a;">REINICIAR</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="index.html" class="btn form-control" style="background-color: #f7f4ed; color: #25364a;">
+        <i class="bi bi-arrow-left-circle"></i> REGRESAR AL MENÚ
+    </a>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/imc.js"></script>
+</body>
+</html>

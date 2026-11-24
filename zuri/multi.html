@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <title>Generador de multiplicaciones</title>
+    <style>
+        body { background:#f3e9dc; color:#283c35; font-family:Arial,sans-serif; margin:0; }
+        .topbar { background:#b76e45; padding:12px 22px; box-shadow:0 3px 10px #0001; }
+        .topbar a { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-weight:bold; }
+        .topbar img { width:38px; height:38px; object-fit:cover; border-radius:8px; }
+        .panel { background:#fffaf2; border:2px solid #b76e45; border-radius:14px; box-shadow:0 6px 15px rgba(40,60,53,.12); padding:22px; height:100%; }
+        h3 { color:#b76e45; }
+        .range { accent-color:#b76e45; width:100%; }
+        .btn-reset { background:#b76e45; color:white; border:0; border-radius:7px; padding:9px 18px; }
+        .btn-reset:hover { background:#925638; color:white; }
+        #tabla { min-height:240px; padding:12px; border-radius:10px; background:#f3e9dc; text-align:center; }
+        #tabla p { margin:7px 0; color:#b76e45; font-weight:600; }
+        @media(max-width:767px){ .panel{padding:16px;} }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a href="index.html" title="Regresar al menú">
+            <img src="img/hitler.jpg" alt="Volver al menú">
+            <span>GENERADOR DE MULTIPLICACIONES</span>
+        </a>
+    </header>
+    <main class="container py-4">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-12 col-md-5">
+                <section class="panel">
+                    <h3>SELECCIONA TU TABLA</h3>
+                    <p>Desliza para elegir el número que deseas multiplicar:</p>
+                    <input type="range" class="range" id="numero" min="1" max="10" value="1" oninput="mostrarTabla()">
+                    <p class="fs-3 text-center mt-3 mb-4" id="vn">1</p>
+                    <button class="btn-reset w-100" onclick="reiniciarTabla()">REINICIAR</button>
+                </section>
+            </div>
+            <div class="col-12 col-md-7">
+                <section class="panel">
+                    <h3 class="text-center">TABLA DE RESULTADOS</h3>
+                    <p class="text-center">Los resultados aparecerán aquí al mover el deslizador.</p>
+                    <div id="tabla">1 x 1 = 1</div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="js/tablas.js"></script>
+</body>
+</html>
